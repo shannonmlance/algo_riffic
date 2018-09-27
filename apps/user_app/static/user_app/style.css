@@ -1,0 +1,35 @@
+body {
+    padding: 25px;
+    background-image: linear-gradient(cornflowerblue, aliceblue, cornflowerblue);
+}
+.welcome {
+    color: #dc3445;
+    text-shadow: 3px 3px 0px darkslateblue;
+}
+.container {
+    margin-top: 35px;
+}
+.title {
+    color: #dc3445;
+    text-shadow: 3px 3px 3px slategray;
+}
+.navigation-bar {
+    display: inline-block;
+}
+.navigation-link {
+    margin-right: 15px;
+}
+#begin-btn {
+    margin-left: 15px;
+}
+.belt {
+    height: 50px;
+    width: 108px;
+    margin-left: 15px;
+}
+.belt-title h2, .belt-title img {
+    display: inline-block;
+}
+#credits {
+    font-size: 8px;
+}

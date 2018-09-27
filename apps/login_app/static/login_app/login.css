@@ -1,0 +1,26 @@
+body {
+    padding: 25px;
+    background-image: linear-gradient(cornflowerblue,aliceblue,cornflowerblue);
+    display: block;
+}
+.container-block {
+    color: #dc3445;
+    width: 400px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 50px;
+}
+.welcome {
+    color: #dc3445;
+    text-shadow: 3px 3px 0px darkslateblue;
+}
+.title {
+    color: #dc3445;
+    text-shadow: 3px 3px 3px slategray;
+}
+.container {
+    margin-top: 35px;
+}
+.messages {
+    color: darkslateblue;
+}

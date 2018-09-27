@@ -1,0 +1,25 @@
+body {
+    padding: 25px;
+    background-image: linear-gradient(cornflowerblue, aliceblue, cornflowerblue);
+}
+.welcome {
+    color: #dc3445;
+    text-shadow: 3px 3px 0px darkslateblue;
+}
+.container {
+    margin-top: 35px;
+}
+.navigation-bar {
+    display: inline-block;
+}
+.navigation-link {
+    margin-right: 5px;
+    margin-left: 15px;
+}
+.belt {
+    height: 50px;
+    width: 108px;
+}
+.logout {
+    margin-left: 10px;
+}

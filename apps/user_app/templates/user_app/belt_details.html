@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- allows pages to be responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- link for bootstrap's css file -->
+    <!-- must go before all other stylesheet links -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- tells django where to look for my static files -->
+    {% load static %}
+    <!-- link for my css file -->
+    <link rel="stylesheet" href="{% static 'user_app/style.css' %}">
+    <!-- browser tab title -->
+    <title>Algo-riffic | Belts</title>
+</head>
+<body>
+    <!-- navigation bar -->
+    <div class="container">
+        <div class="row justify-content-end">
+            <a href="/user_profile" class="navigation-bar navigation-link">User Profile</a>
+            <a href="/" class="navigation-bar logout">Logout</a>
+        </div>
+    </div>
+
+    <!-- belt info -->
+    <div class="container">
+        <div class="container">
+            <div class="belt-title">
+                <h2 class="title">White Belt:</h2>
+                <img src="{% static 'user_app/white-belt.jpg' %}" alt="white belt" class="belt">
+            </div>
+            <p>White signifies a birth, or beginning, of a seed. A white belt student is a beginner searching for knowledge of the Art. The white belt is the beginning of life's cycle, and represents the seed as it lies beneath the snow in the winter.</p>
+        </div>
+        
+        <div class="container">
+            <div class="belt-title">
+                <h2 class="title">Yellow Belt:</h2>
+                <img src="{% static 'user_app/yellow-belt.jpg' %}" alt="yellow belt" class="belt">
+            </div>
+            <p>Yellow signifies the first beams of sunlight which shines upon the seed giving it new strength with the beginning of new life. A yellow belt student is given his first ray of knowledge, opening his mind, from his instructors.</p>
+        </div>
+
+        <div class="container">
+            <div class="belt-title">
+                <h2 class="title">Orange Belt:</h2>
+                <img src="{% static 'user_app/orange-belt.jpg' %}" alt="orange belt" class="belt">
+            </div>
+            <p>Orange represents the growing power of the sun as it warms the earth to prepare for new growth in the spring. The orange belt is starting to feel his body and mind open and develop.</p>
+        </div>
+
+        <div class="container">
+            <div class="belt-title">
+                <h2 class="title">Green Belt:</h2>
+                <img src="{% static 'user_app/green-belt.jpg' %}" alt="green belt" class="belt">
+            </div>
+            <p>Green signifies the growth of the seed as it sprouts from the earth reaching toward the sun and begins to grow into a plant. A green belt student learns to strengthen and refine his techniques.</p>
+        </div>
+
+        <div class="container">
+            <div class="belt-title">
+                <h2 class="title">Blue Belt:</h2>
+                <img src="{% static 'user_app/blue-belt.jpg' %}" alt="blue belt" class="belt">
+            </div>
+            <p>Blue signifies the blue sky as the plant continues to grow toward it. A blue belt student moves up higher in rank just as the plant grows taller. The light feeds the plant so it can continue to grow. The student is fed additional knowledge of the Art in order for his body and mind to continue to grow and develop.</p>
+        </div>
+
+        <div class="container">
+            <div class="belt-title">
+                <h2 class="title">Purple Belt:</h2>
+                <img src="{% static 'user_app/purple-belt.jpg' %}" alt="purple belt" class="belt">
+            </div>
+            <p>Purple represents the changing sky of dawn, as once again the student undergoes a new change and prepares for the transition to advanced student. A purple belt begins to understand the meaning of the black belt.</p>
+        </div>
+
+        <div class="container">
+            <div class="belt-title">
+                <h2 class="title">Brown Belt:</h2>
+                <img src="{% static 'user_app/brown-belt.jpg' %}" alt="brown belt" class="belt">
+            </div>
+            <p>Brown represents the ripening of the seed, a maturing and harvesting process. A brown belt is an advanced student whose techniques are beginning to mature, and he is beginning to understand the fruits of his hard work as a beginner.</p>
+        </div>
+
+        <div class="container">
+            <div class="belt-title">
+                <h2 class="title">Red Belt:</h2>
+                <img src="{% static 'user_app/red-belt.jpg' %}" alt="red belt" class="belt">
+            </div>
+            <p>Red signifies the red-hot heat of the Sun as teh plant continues growing toward it. As a red belt student acquires more detailed knowledge, just as the plant grows slowly toward the Sun, so the red belt student learns to be more cautious with his knowledge and physical abilities. Red is a sign of danger, and the red belt is beginning to become dangerous with their knowledge and abilities.</p>
+        </div>
+
+        <div class="container">
+            <div class="belt-title">
+                <h2 class="title">Black Belt:</h2>
+                <img src="{% static 'user_app/black-belt.jpg' %}" alt="black belt" class="belt">
+            <p>Black signifies the darkness beyond the Sun. A black belt seeks new, more profound knowledge of the Art. As he begins to teach others, he plants new seeds and helps them grow and mature. His students, many whom will form roots deep into the Art, blossom and grow through the ranks in a never-ending process of self-growth, knowledge, and enlightenment.</p>
+        </div>
+    </div>
+
+    <!-- credits -->
+    <div class="container row justify-content-center">
+        <p id="credits">belt information from www.wmacenter.com</p>
+    </div>
+
+    <!-- remember the {# {% csrf_token %} #} to make FORMS secure (put it directly under the forms opening tag) -->
+    <!-- if using session: using terminal, in the main project folder, run the following commands -->
+        <!-- > python manage.py makemigrations -->
+        <!-- > python manage.py migrate -->
+
+    <!-- links for bootstrap's jquery, popper, and javascript files -->
+    <!-- must go at the end of all code, just before the closing body tag -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

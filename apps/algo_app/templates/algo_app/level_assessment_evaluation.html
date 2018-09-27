@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- allows pages to be responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- link for bootstrap's css file -->
+    <!-- must go before all other stylesheet links -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- tells django where to look for my static files -->
+    {% load static %}
+    <!-- link for my css file -->
+    <link rel="stylesheet" href="{% static 'algo_app/style.css' %}">
+    <!-- browser tab title -->
+    <title>Algo-riffic | Level Assessment</title>
+</head>
+<body>
+    <!-- navigation bar -->
+    <div class="container">
+        <div class="row justify-content-end">
+            <p class="navigation-bar navigation-link">Belt Rank: 
+                {% if user.belt_rank == 1 %}<img src="{% static 'user_app/white-belt.jpg' %}" alt="white belt" class="belt">{% endif %}
+                {% if user.belt_rank == 2 %}<img src="{% static 'user_app/yellow-belt.jpg' %}" alt="yellow belt" class="belt">{% endif %}
+                {% if user.belt_rank == 3 %}<img src="{% static 'user_app/orange-belt.jpg' %}" alt="orange belt" class="belt">{% endif %}
+                {% if user.belt_rank == 4 %}<img src="{% static 'user_app/green-belt.jpg' %}" alt="green belt" class="belt">{% endif %}
+                {% if user.belt_rank == 5 %}<img src="{% static 'user_app/blue-belt.jpg' %}" alt="blue belt" class="belt">{% endif %}
+                {% if user.belt_rank == 6 %}<img src="{% static 'user_app/purple-belt.jpg' %}" alt="purple belt" class="belt">{% endif %}
+                {% if user.belt_rank == 7 %}<img src="{% static 'user_app/brown-belt.jpg' %}" alt="brown belt" class="belt">{% endif %}
+                {% if user.belt_rank == 8 %}<img src="{% static 'user_app/red-belt.jpg' %}" alt="red belt" class="belt">{% endif %}
+                {% if user.belt_rank == 9 %}<img src="{% static 'user_app/black-belt.jpg' %}" alt="black belt" class="belt">{% endif %}
+            </p>
+            <p class="navigation-bar navigation-link">Dojo Points: {{user.dojo_points}}</p>
+            <a href="/" class="navigation-bar logout">Logout</a>
+        </div>
+        <h1 class="welcome navigation-bar"><a href="/user_profile" class="navbar-brand">{{request.session.name}}</a></h1>
+    </div>
+
+    <!-- display correct answer -->
+    <p>You got the answer right!</p>
+
+    <!-- display wrong answer -->
+    <p>That answer is not quite right. Let's do some more practicing.</p>
+
+    <!-- link to next lesson -->
+    <div class="container">
+        <a href="" class="btn btn-outline-danger">Next Lesson</a>
+    </div>
+
+
+    <!-- remember the {# {% csrf_token %} #} to make FORMS secure (put it directly under the forms opening tag) -->
+    <!-- if using session: using terminal, in the main project folder, run the following commands -->
+        <!-- > python manage.py makemigrations -->
+        <!-- > python manage.py migrate -->
+
+    <!-- links for bootstrap's jquery, popper, and javascript files -->
+    <!-- must go at the end of all code, just before the closing body tag -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
