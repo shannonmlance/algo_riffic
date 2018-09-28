@@ -149,3 +149,8 @@ def level_practice_compare_answer(request, lnum, slnum):
     else:
         # redirect to login app
         return redirect("/")
+
+# called by "sub_lesson/drag_and_drop/pseudo_code" through url(r'^sub_lesson/drag_and_drop/pseudo_code$', views.sub_lesson_drag_and_drop_pseudo_code)
+def sub_lesson_drag_and_drop_pseudo_code(request):
+    if "id" in request.session:
+        return render(request, "algo_app/pseudo_code_level.html")

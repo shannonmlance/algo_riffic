@@ -33,3 +33,20 @@ body {
 .shrink-container {
     width: 500px;
 }
+
+.box_dropped_into {
+    width: 435px;
+    height: 310px;
+    border: 2px solid black;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.code_snippets {
+    width: 400px;
+    height: 310px;
+    border: 2px dotted red;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 70px;
+}
