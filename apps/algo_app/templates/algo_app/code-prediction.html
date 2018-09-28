@@ -13,13 +13,14 @@
     <!-- link for my css file -->
     <link rel="stylesheet" href="{% static 'algo_app/style.css' %}">
     <!-- browser tab title -->
-    <title>Algo-riffic | Level Assessment</title>
+    <title>Algo-riffic | Level Practice</title>
 </head>
 <body>
     <!-- navigation bar -->
     <div class="container">
         <div class="row justify-content-end">
-            <p class="navigation-bar navigation-link">Belt Rank: 
+            <p class="navigation-bar navigation-link">Belt Rank:</p>
+            <div>
                 {% if user.belt_rank == 1 %}<img src="{% static 'user_app/white-belt.jpg' %}" alt="white belt" class="belt">{% endif %}
                 {% if user.belt_rank == 2 %}<img src="{% static 'user_app/yellow-belt.jpg' %}" alt="yellow belt" class="belt">{% endif %}
                 {% if user.belt_rank == 3 %}<img src="{% static 'user_app/orange-belt.jpg' %}" alt="orange belt" class="belt">{% endif %}
@@ -29,55 +30,47 @@
                 {% if user.belt_rank == 7 %}<img src="{% static 'user_app/brown-belt.jpg' %}" alt="brown belt" class="belt">{% endif %}
                 {% if user.belt_rank == 8 %}<img src="{% static 'user_app/red-belt.jpg' %}" alt="red belt" class="belt">{% endif %}
                 {% if user.belt_rank == 9 %}<img src="{% static 'user_app/black-belt.jpg' %}" alt="black belt" class="belt">{% endif %}
-            </p>
+            </div>
             <p class="navigation-bar navigation-link">Dojo Points: {{user.dojo_points}}</p>
             <a href="/" class="navigation-bar logout">Logout</a>
         </div>
         <h1 class="welcome navigation-bar"><a href="/user_profile" class="welcome profile-link">{{request.session.name}}</a></h1>
     </div>
 
+    <!-- errors -->
     <div class="container">
-        <!-- display correct answer -->
-        {% if request.session.answer_correct == True %}
-            <p>You got the answer correct!</p>
-            <p>You have received the 
-                {% if user.belt_rank == 2 %}Yellow Belt{% endif %}
-                {% if user.belt_rank == 3 %}Orange Belt{% endif %}
-                {% if user.belt_rank == 4 %}Green Belt{% endif %}
-                {% if user.belt_rank == 5 %}Blue Belt{% endif %}
-                {% if user.belt_rank == 6 %}Purple Belt{% endif %}
-                {% if user.belt_rank == 7 %}Brown Belt{% endif %}
-                {% if user.belt_rank == 8 %}Red Belt{% endif %}
-                {% if user.belt_rank == 9 %}Black Belt{% endif %}
-                to distinguish your accomplishments.</p>
-            <!-- display belt -->
-            <div class="container">
-                {% if user.belt_rank == 1 %}<img src="{% static 'user_app/white-belt.jpg' %}" alt="white belt" class="belt-big">{% endif %}
-                {% if user.belt_rank == 2 %}<img src="{% static 'user_app/yellow-belt.jpg' %}" alt="yellow belt" class="belt-big">{% endif %}
-                {% if user.belt_rank == 3 %}<img src="{% static 'user_app/orange-belt.jpg' %}" alt="orange belt" class="belt-big">{% endif %}
-                {% if user.belt_rank == 4 %}<img src="{% static 'user_app/green-belt.jpg' %}" alt="green belt" class="belt-big">{% endif %}
-                {% if user.belt_rank == 5 %}<img src="{% static 'user_app/blue-belt.jpg' %}" alt="blue belt" class="belt-big">{% endif %}
-                {% if user.belt_rank == 6 %}<img src="{% static 'user_app/purple-belt.jpg' %}" alt="purple belt" class="belt-big">{% endif %}
-                {% if user.belt_rank == 7 %}<img src="{% static 'user_app/brown-belt.jpg' %}" alt="brown belt" class="belt-big">{% endif %}
-                {% if user.belt_rank == 8 %}<img src="{% static 'user_app/red-belt.jpg' %}" alt="red belt" class="belt-big">{% endif %}
-                {% if user.belt_rank == 9 %}<img src="{% static 'user_app/black-belt.jpg' %}" alt="black belt" class="belt-big">{% endif %}
-            </div>
-                <!-- link to next lesson -->
-                <div class="container">
-                    <a href="/level_assessment/{{user.current_lesson}}" class="btn btn-outline-danger">Next Lesson</a>
-            </div>
-        {% endif %}
-
-        <!-- display wrong answer -->
-        {% if request.session.answer_correct == False %}
-            <p>That answer is not quite right. Let's do some more practicing.</p>
-            <!-- link to next lesson -->
-            <div class="container">
-                    <a href="/level_practice/{{user.current_lesson}}/{{user.current_sub_lesson}}" class="btn btn-outline-danger">Next Lesson</a>
-                </div>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li>{{message}}</li>
+            {% endfor %}
+        </ul>
         {% endif %}
     </div>
 
+    <!-- lesson platform -->
+    <div class="container">
+        <!-- instructions -->
+        <div class="container">
+            <p>{{sub_lesson.instructions|safe}}</p>
+        </div>
+        
+        <!-- response form -->
+        <div class="container shrink-container">
+            <form action="/level_practice/{{lesson.number}}/{{sub_lesson.number}}/compare_answer" method="post">
+                {% csrf_token %}
+                {% for question in questions %}
+                <div class="form-group row">
+                    <label class="col-form-label col-sm-6">{{question.question|safe}}</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="answer">
+                    </div>
+                </div>
+                {% endfor %}
+                <button type=submit class="btn btn-outline-danger">Submit</button>
+            </form>
+        </div>
+    </div>
 
 
     <!-- remember the {# {% csrf_token %} #} to make FORMS secure (put it directly under the forms opening tag) -->

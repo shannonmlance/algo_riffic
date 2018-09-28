@@ -34,7 +34,7 @@
             <p class="navigation-bar navigation-link">Dojo Points: {{user.dojo_points}}</p>
             <a href="/" class="navigation-bar logout">Logout</a>
         </div>
-        <h1 class="welcome navigation-bar"><a href="/user_profile" class="welcome">{{request.session.name}}</a></h1>
+        <h1 class="welcome navigation-bar"><a href="/user_profile" class="welcome profile-link">{{request.session.name}}</a></h1>
     </div>
 
     <!-- lesson platform -->
@@ -43,70 +43,19 @@
         <div class="container">
             <p>{{lesson.instructions|safe}}</p>
         </div>
+    </div>
         <!-- response form -->
         <div class='container'>
             <form action="/level_assessment/{{lesson.number}}/compare_answer" method="post">
                 {% csrf_token %}
-                <div class="form-group row">
-                    <label class="col-form-label col-sm-1">1</label>
-                    <div class="col-sm-11">
-                        <input type="text" class="form-control" name="answer1">
+                {% for question in questions %}
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-6">{{question.question|safe}}</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="answer">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-form-label col-sm-1">2</label>
-                    <div class="col-sm-11">
-                        <input type="text" class="form-control" name="answer2">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-form-label col-sm-1">3</label>
-                    <div class="col-sm-11">
-                        <input type="text" class="form-control" name="answer3">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-form-label col-sm-1">4</label>
-                    <div class="col-sm-11">
-                        <input type="text" class="form-control" name="answer4">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-form-label col-sm-1">5</label>
-                    <div class="col-sm-11">
-                        <input type="text" class="form-control" name="answer5">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-form-label col-sm-1">6</label>
-                    <div class="col-sm-11">
-                        <input type="text" class="form-control" name="answer6">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-form-label col-sm-1">7</label>
-                    <div class="col-sm-11">
-                        <input type="text" class="form-control" name="answer7">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-form-label col-sm-1">8</label>
-                    <div class="col-sm-11">
-                        <input type="text" class="form-control" name="answer8">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-form-label col-sm-1">9</label>
-                    <div class="col-sm-11">
-                        <input type="text" class="form-control" name="answer9">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-form-label col-sm-1">10</label>
-                    <div class="col-sm-11">
-                        <input type="text" class="form-control" name="answer10">
-                    </div>
-                </div>
+                {% endfor %}
                 <button type=submit class="btn btn-outline-danger">Submit</button>
             </form>
         </div>

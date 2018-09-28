@@ -18,3 +18,8 @@ class Answer(models.Model):
     regex = models.TextField()
     lessons = models.ManyToManyField(Lesson, related_name="answers")
     sub_lessons = models.ManyToManyField(Sub_lesson, related_name="answers")
+
+class Question(models.Model):
+    question = models.TextField()
+    lessons = models.ManyToManyField(Lesson, related_name="questions")
+    sub_lessons = models.ManyToManyField(Sub_lesson, related_name="questions")

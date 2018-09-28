@@ -23,3 +23,13 @@ body {
 .logout {
     margin-left: 10px;
 }
+.profile-link {
+    text-decoration: none;
+}
+.belt-big {
+    height: 200px;
+    width: auto;
+}
+.shrink-container {
+    width: 500px;
+}
